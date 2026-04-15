@@ -6,15 +6,14 @@ dotenv.config()
 // const MONGODB_URL = process.env.MONGODB_URI
 
 const dbconnect = async()=>{
-    try{
-        const con =await mongoose.connect(process.env.MONGO_URI,{maxPoolSize: 10,
-            serverSelectionTimeoutMS: 5000,
-            socketTimeoutMS: 45000
-        })
-        console.log("monodb connected successfully")
-    }catch (error) {
-console.error(error);
-    }
+  try {
+    // Connect to the MongoDB database
+    await mongoose.connect(process.env.MONGO_URI);
+
+    console.log("Connected to the database");
+  } catch (error) {
+    console.error("Error connecting to the database:", error);
+  }
 }
 
 module.exports = dbconnect
