@@ -9,9 +9,16 @@ require('dotenv').config();
 dbconnect();
 
 const server = http.createServer(app);
+// const io = new Server(server, {
+//   cors: {
+//     origin: "*",
+//   },
+// });
 const io = new Server(server, {
   cors: {
-    origin: "*",
+    origin: ["https://chatleaf-messagingapp.netlify.app","http://localhost:3000"],
+    methods: ["GET", "POST"],
+    credentials: true,
   },
 });
 
